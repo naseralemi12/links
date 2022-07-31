@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Native Dialogs</title>
+    <style>
+        * {
+            padding: 1px;
+            margin: 1px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+
+        <h1>Simple Dialogs?</h1>
+        <ul style="list-style: none;">
+            <li>
+                <button onclick="myAlertFunction()">Alert</button>
+            </li>
+            <li>
+                <button onclick="myConfirmFunction()">Confirm</button>
+            </li>
+            <li>
+                <button onclick="myPromptFunction()">Prompt</button>
+            </li>
+            <li>
+                <button onclick="mySafeFunction()">Safer Prompt</button>
+            </li>
+
+        </ul>
+
+    </header>
+    <hr>
+
+    <p id="pid"></p>
+
+    <script>
+        myAlertFunction = () => {
+
+            alert('Alert Pressed!');
+            document.getElementById('pid').style.visibility = "hidden";
+        }
+
+
+        myConfirmFunction = () => {
+
+            let output;
+            if (confirm('Do you confirm this?')) {
+                output = 'Confirm result: true'
+            } else {
+                output = 'Confirm result: false'
+            }
+
+            document.getElementById('pid').innerHTML = output;
+            document.getElementById('pid').style.borderStyle = 'double';
+            document.getElementById('pid').style.visibility = "visible";
+            document.getElementById('pid').style.width = '20%';
+            document.getElementById('pid').style.padding = '10px';
+
+        }
+
+        myPromptFunction = () => {
+            let output;
+            const value = '<b onmouseover="alert(\'pwned\')">Roll me</b>';
+            output = prompt('What is your name?')
+
+            if (output != null) {
+                document.getElementById('pid').innerText = 'Prompt result: ' + output;
+                document.getElementById('pid').style.borderStyle = 'double';
+                document.getElementById('pid').style.width = 'fit-content';
+                document.getElementById('pid').style.padding = '10px';
+            }
+            if (output === value) {
+                const getLastIndex = value.substring(32, value.lastIndexOf('<'));
+                document.getElementById('pid').innerText = 'Prompt result: ' + getLastIndex;
+                document.getElementById('pid').style.borderStyle = 'double';
+                document.getElementById('pid').style.width = 'fit-content';
+                document.getElementById('pid').style.padding = '10px';
+
+                document.getElementById("pid").addEventListener("mouseover", mouseOverfunction);
+
+                function mouseOverfunction() {
+                    alert("pwned");
+                }
+            }
+            if (output === null) {
+                document.getElementById('pid').innerText = 'Prompt result: User did not enter anything';
+                document.getElementById('pid').style.borderStyle = 'double';
+                document.getElementById('pid').style.width = 'fit-content';
+                document.getElementById('pid').style.padding = '10px';
+            }
+
+            document.getElementById('pid').style.visibility = "visible";
+        }
+
+        mySafeFunction = () => {
+            let output;
+            output = prompt('What is your name?', '<b onmouseover="alert(\'pwned\')">Roll me</b>')
+
+            const value = '<b onmouseover="alert(\'pwned\')">Roll me</b>';
+
+            if (output != null) {
+                document.getElementById('pid').innerText = 'Prompt result: ' + output;
+                document.getElementById('pid').style.borderStyle = 'double';
+                document.getElementById('pid').style.width = 'fit-content';
+                document.getElementById('pid').style.padding = '10px';
+            }
+            if (output === value) {
+                const getLastIndex = value.substring(32, value.lastIndexOf('<'));
+                document.getElementById('pid').innerText = 'Prompt result: ' + getLastIndex;
+                document.getElementById('pid').style.borderStyle = 'double';
+                document.getElementById('pid').style.width = 'fit-content';
+                document.getElementById('pid').style.padding = '10px';
+
+                document.getElementById("pid").addEventListener("mouseover", mouseOverfunction);
+
+                function mouseOverfunction() {
+                    alert("pwned");
+                }
+            }
+            if (output === null) {
+                document.getElementById('pid').innerText = 'Prompt result: User did not enter anything';
+                document.getElementById('pid').style.borderStyle = 'double';
+                document.getElementById('pid').style.width = 'fit-content';
+                document.getElementById('pid').style.padding = '10px';
+            }
+            document.getElementById('pid').style.visibility = "visible";
+        }
+    </script>
+    <button onclick="history.back()">Go Back</button>
+
+</body>
+
+</html>

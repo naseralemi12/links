@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crud</title>
+    <style>
+        * {
+            background-color: lightcyan;
+        }
+        
+        body>table {
+            width: 80%;
+            margin-left: 10%;
+        }
+        
+        td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        
+        #deleteButton {
+            margin-right: 2px;
+        }
+        
+        #deleteButton:hover {
+            border-color: red;
+        }
+        
+        #addButton {
+            margin-bottom: 1px;
+        }
+        
+        #addButton:hover {
+            color: blue
+        }
+        
+        #saveButton:hover {
+            color: blue
+        }
+        
+        #cancelButton:hover {
+            color: blue
+        }
+        
+        #saveButton {
+            margin: 1px;
+        }
+        
+        #cancelButton {
+            margin: 1px;
+        }
+        
+        th.headers {
+            background-color: rgb(191, 189, 189);
+        }
+        
+        h1 {
+            margin-left: 5%;
+        }
+        
+        #date {
+            width: 22ch;
+        }
+        
+        dialog::backdrop {
+            background: rgba(142, 241, 200, 0.218);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>BLOG POSTS</h1>
+    <button id="addButton">Add Blog Post</button>
+    <dialog id="dialogBox">
+        <form method="dialog" autocomplete="off">
+            <p><label for="title">Blog Title :
+            <input type="text" id="title" name="title" width="16ch">
+          </label></p>
+            <p><label for="date">Blog Date : <input type="date" id="date" name="date" width="20ch"></label></p>
+            <p><label style="float:left" for="summary">Summary :&nbsp </label><textarea rows="3" cols="20" id="summary" name="summary"></textarea></p>
+            <div>
+                <button id="saveButton" onclick="onFormSubmit();" value="submit" type="submit">Save</button>
+                <button id="cancelButton" value="cancel" type="button">Cancel</button>
+            </div>
+        </form>
+    </dialog>
+
+    <dialog id="deleteDialog">
+        <form method="dialog">
+            <h4>Are you sure that you want to delete this blog post?</h4>
+            <button type="submit" value="Canceled!">Cancel</button>
+            <button id="deleteButton" type="submit" value="Delete">Delete</button>
+        </form>
+    </dialog>
+
+    <div class="BlogPostTable">
+        <table class="list" id="blogList">
+            <thead>
+                <tr>
+                    <th class="headers">Blog Title</th>
+                    <th class="headers">Blog Date</th>
+                    <th class="headers">Blog Summary</th>
+                    <th class="headers">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <script src="blog.js"></script>
+    <script src="readFormData.js"></script>
+    <button onclick="history.back()">Go Back</button>
+</body>
+
+</html>

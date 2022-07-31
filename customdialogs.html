@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Custom Dialogs</title>
+    <style>
+        * {
+            margin: 1px;
+            padding: 1px;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        dialog {
+            margin: 20%;
+            width: 25%;
+        }
+        
+        li {
+            display: inline-block;
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+    <header>
+
+        <h1>Custom Dialogs?</h1>
+        <nav>
+            <ul>
+                <li>
+                    <button id="alertButton">Alert</button>
+                </li>
+                <li>
+                    <button id="confirmButton">Confirm</button>
+                </li>
+                <li>
+                    <button id="promptButton">Prompt</button>
+                </li>
+
+            </ul>
+        </nav>
+
+    </header>
+    <hr>
+
+    <p id="confirmMsg"></p>
+
+    <dialog id="alertBox">
+        <form method="dialog">
+            <p>Alert pressed!</p>
+            <button id="okBtn" value="default">OK</button>
+        </form>
+    </dialog>
+
+    <dialog id="confirmBox">
+        <form method="dialog">
+            <p>Do you confirm this?</p>
+            <button id="cancelBtn" onclick="CancelFun()" value="cancel">Cancel</button>
+            <button id="confirmButton" onclick="ConfFun()" value="default">OK</button>
+        </form>
+    </dialog>
+
+    <dialog id="promptBox">
+        <form method="dialog" id="promptForm">
+            <p>What is your name?</p>
+            <input type="text" id="inputBox" size="50" value=" "><br>
+
+            <button id="cancelBtn2" onclick="promptCancelFun()" value="cancel">Cancel</button>
+            <button id="confirmButton2" onclick="TypeName()" value="save">OK</button>
+        </form>
+    </dialog>
+    <button onclick="history.back()">Go Back</button>
+    <script src="customdialog.js"></script>
+</body>
